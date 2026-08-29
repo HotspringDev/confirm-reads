@@ -1,0 +1,12 @@
+# Example: add this to $DSH_HOME/profiles/<profile>/cordis.patch.yml and place
+# this package at $DSH_HOME/profiles/<profile>/plugins/confirm-reads/.
+# Then restart `dsh` (e.g. `dsh web`).
+- insert:
+    - id: confirm-reads
+      name: ./plugins/confirm-reads/lib/index.js
+      config:
+        tools:
+          - read
+          - glob
+          - grep
+          - bash

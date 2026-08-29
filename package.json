@@ -1,0 +1,34 @@
+{
+  "name": "confirm-reads",
+  "version": "1.0.0",
+  "description": "DeepSeek Harness (dsh) plugin that gates read-capable tools (read/glob/grep/bash) behind per-call user approval, with a persistent /confirm-reads toggle; danger-full-access mode is exempt.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js"
+  },
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "cordis",
+    "plugin",
+    "approval",
+    "security",
+    "privacy",
+    "sandbox"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HotspringDev/confirm-reads.git"
+  }
+}
