@@ -1,6 +1,12 @@
-# Example: add this to $DSH_HOME/profiles/<profile>/cordis.patch.yml and place
-# this package at $DSH_HOME/profiles/<profile>/plugins/confirm-reads/.
-# Then restart `dsh` (e.g. `dsh web`).
+# MANUAL FALLBACK ONLY — no longer needed once the plugin is installed as a
+# standard dsh bundle (`dsh plugin --profile <name> add confirm-reads`), which
+# auto-mounts the package's own root `cordis.patch.yml` and auto-registers it
+# in `dsh.profile.bundles`.
+#
+# Legacy manual method (no npm install):
+#   1. Copy this package to $DSH_HOME/profiles/<profile>/plugins/confirm-reads/
+#   2. Append the block below to $DSH_HOME/profiles/<profile>/cordis.patch.yml
+#   3. Restart `dsh` (e.g. `dsh web`)
 - insert:
     - id: confirm-reads
       name: ./plugins/confirm-reads/lib/index.js

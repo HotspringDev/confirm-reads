@@ -20,17 +20,27 @@ By default, a dsh session under `workspace-write` may **read** any file — insi
 
 ## Install / 安装
 
-### Option A — local profile patch (recommended) / 本地 profile 补丁（推荐）
+This package is a **standard dsh bundle** (`dsh.bundle.patch` declaration + root `cordis.patch.yml`). Installing it auto-mounts the plugin and auto-registers it in the profile's `dsh.profile.bundles` — no manual profile-patch editing.
 
-1. Put this package at `<profile>/plugins/confirm-reads/` (e.g. `$DSH_HOME/profiles/web/plugins/confirm-reads/`) / 把本包放到 `<profile>/plugins/confirm-reads/` 下。
-2. Append `examples/cordis.patch.yml` to your profile's `cordis.patch.yml` / 把 `examples/cordis.patch.yml` 的内容追加到 profile 的 `cordis.patch.yml`。
-3. Restart `dsh` (e.g. `dsh web`) / 重启 `dsh`。
+本包是**标准 dsh bundle**（含 `dsh.bundle.patch` 声明与包根 `cordis.patch.yml`）。安装后自动挂载插件并自动登记进 profile 的 `dsh.profile.bundles`，无需手工改 profile 补丁。
 
-### Option B — npm bundle (once published) / npm 包方式（发布后）
+### Option A — from npm (published) / npm 发布后安装
 
 ```sh
 dsh plugin --profile web add confirm-reads
 ```
+
+### Option B — local development (unpublished) / 本地开发安装（未发布）
+
+```sh
+dsh plugin --profile web add link:/absolute/path/to/confirm-reads
+```
+
+`dsh plugin add` runs pnpm in the profile and then reconciles `dsh.profile.bundles` against installed dependencies — a package declaring `dsh.bundle` joins the layer stack automatically. Restart `dsh` afterwards / `dsh plugin add` 会在 profile 内执行 pnpm 安装，并自动把声明了 `dsh.bundle` 的依赖加入 layer 栈；完成后重启 `dsh` 生效。
+
+### Manual fallback (no install) / 手工回退方案（不安装）
+
+Copy the package into `<profile>/plugins/confirm-reads/` and append `examples/cordis.patch.yml` to `<profile>/cordis.patch.yml` (see that file for details) / 把包复制到 `<profile>/plugins/confirm-reads/`，并将 `examples/cordis.patch.yml` 追加到 `<profile>/cordis.patch.yml`（详见该文件）。
 
 ## Usage / 使用
 

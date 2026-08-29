@@ -1,0 +1,24 @@
+# confirm-reads — dsh bundle patch (mount declaration).
+#
+# This file is the plugin's mount declaration: dsh resolves every entry in a
+# profile's `dsh.profile.bundles` to the package's `dsh.bundle.patch` and
+# applies it as a patch layer over the empty profile root.
+#
+# Install (no manual profile-patch editing needed):
+#   dsh plugin --profile web add confirm-reads        # published
+#   dsh plugin --profile web add link:<abs-path>      # local development
+#
+# The row's `name` is the package name itself: once the package is installed
+# into the profile's node_modules, the loader imports the plugin module from
+# it. The profile's own cordis.patch.yml (applied later) may still override
+# this row's whole `config` by id.
+
+- insert:
+    - id: confirm-reads
+      name: confirm-reads
+      config:
+        tools:
+          - read
+          - glob
+          - grep
+          - bash
